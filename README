@@ -3,3 +3,4 @@ sys-setup.sh        System setup scripts
 shell-scripts.sh    Shell scripts
 style.css           Custom styles
 framenewtab         Open Frame in New Tab in Chrome
+keyfilter.html      Filter user input by regex
