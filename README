@@ -6,3 +6,4 @@ framenewtab         Open Frame in New Tab in Chrome
 keyfilter.html      Filter user input by regex
 vbs-scripts.vbs     Vbs scripts
 batch-scripts.bat   Windows batch scripts
+mac-shell-scripts.sh    Shell scripts for mac only
