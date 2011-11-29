@@ -1,3 +1,13 @@
 
+/* Google Reader */
+#lhn-add-subscription-section, #viewer-header, #sections-header { height: 45px !important; }
+.item-body { font: 16px/1.8 Verdana; }
+
+/* Gmail */
+.aki { padding-bottom: 20px !important; }
+.G-atb { padding-bottom: 8px !important; margin-top: 3px !important; }
+.mq { visibility: hidden; height: 0 !important; padding: 0 !important; margin-bottom: 0 !important; }
+
 /* Linux C */
 .sect1 { font: 14px/1.5 Verdana,Microsoft YaHei,Ubuntu; }
+
