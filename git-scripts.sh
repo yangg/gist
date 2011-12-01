@@ -32,6 +32,8 @@ git push --force origin
 # remove all deleted files from the project
 git rm $(git ls-files --deleted)
 
+# Print lines matching a pattern
+git grep -w -e ${word}
 
 git log -g
 git log --author=yangg --since="2011/8/3 00:00" --reverse --pretty=%s
