@@ -35,6 +35,11 @@ git rm $(git ls-files --deleted)
 # Print lines matching a pattern
 git grep -w -e ${word}
 
+git log --name-only -1
+git log --name-status -1
+git log --stat -1
+git whatchanged -1
+
 git log -g
 git log --author=yangg --since="2011/8/3 00:00" --reverse --pretty=%s
 
