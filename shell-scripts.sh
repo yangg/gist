@@ -62,6 +62,14 @@ du --max-depth=1 | sort -nr | awk '{suffs="k M G"; N=split(suffs,suff," "); for(
 cat .ssh/id_rsa.pub | pbcopy
 xclip -sel clip < ~/.ssh/id_rsa.pub
 
+# ascii digital click(@require sysvbanner)
+watch -tn1 'date +%T | xargs banner'
+
+# prettier "cal" command
+cal | grep -A7 -B7 --color=auto "\b`date +%-d`\b"
+# -B, --before-context=NUM
+# -A, --after-context=NUM
+
 if [ $[ `date +%s`-`stat --printf=%Y .filenametags` ] -gt $((24*60*60)) ]; then
     echo 'do something if the file not modified in a day.'
 fi
