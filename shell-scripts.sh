@@ -15,6 +15,8 @@ lsof
 # A Unix Utility You Should Know About: lsof@evernote
 
 uptime # http://www.ruanyifeng.com/blog/2011/07/linux_load_average_explained.html
+fc
+last reboot
 whois uedsky.com
 
 # Multiple variable assignments from command output in BASH
