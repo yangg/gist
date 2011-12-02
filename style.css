@@ -1,7 +1,7 @@
 
 /* Google Reader */
 #lhn-add-subscription-section, #viewer-header, #sections-header { height: 45px !important; }
-.item-body { font: 16px/1.8 Verdana; }
+.item-body { font: 16px/1.8 Verdana,Microsoft YaHei; }
 
 /* Gmail */
 .aki { padding-bottom: 20px !important; }
