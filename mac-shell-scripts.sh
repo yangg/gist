@@ -6,11 +6,16 @@ diskutil erasevolume HFS+ "ramdisk" `hdiutil attach -nomount ram://1165430`
 
 # show hidden files
 defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder
+# delete to deactivate
 # Enable the iTunes song & artist Dock icon popups
 defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Dock
 defaults delete com.apple.dock itunes-notifications && killall Dock
 # Enable select text in quick look window
 defaults write com.apple.finder QLEnableTextSelection -bool true && killall Finder
+# Enable scroll to open Dock
+defaults write com.apple.dock scroll-to-open -bool true && killall Dock
+# Show a full size window when scroll in Mission Control
+defaults write com.apple.dock expose-cluster-scale -float 1 && killall Dock
 
 launchctl
 
