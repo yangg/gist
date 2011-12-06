@@ -16,6 +16,8 @@ defaults write com.apple.finder QLEnableTextSelection -bool true && killall Find
 defaults write com.apple.dock scroll-to-open -bool true && killall Dock
 # Show a full size window when scroll in Mission Control
 defaults write com.apple.dock expose-cluster-scale -float 1 && killall Dock
+# Set the path bar to be relative home directory in Mac OS X Finder
+defaults write com.apple.finder PathBarRootAtHome -bool true && killall Finder
 
 launchctl
 
