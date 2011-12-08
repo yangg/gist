@@ -76,6 +76,9 @@ if [ $[ `date +%s`-`stat --printf=%Y .filenametags` ] -gt $((24*60*60)) ]; then
     echo 'do something if the file not modified in a day.'
 fi
 
+# convert from hexadecimal or octal to decimal
+echo $((0x2E)) $((011))
+
 
 # not mac
 # Convert text to lower or upper case
