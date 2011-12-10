@@ -35,6 +35,12 @@ git rm $(git ls-files --deleted)
 # Print lines matching a pattern
 git grep -w -e ${word}
 
+# create & apply patch http://ariejan.net/2009/10/26/how-to-create-and-apply-a-patch-with-git/
+git format-patch HEAD^..HEAD --stdout > test.patch
+git apply --stat  test.patch
+git apply --check test.patch
+git am --signoff < test.patch
+
 git log --name-only -1
 git log --name-status -1
 git log --stat -1
