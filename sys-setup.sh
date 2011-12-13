@@ -1,4 +1,5 @@
 #!/bin/bash
+# curl -L https://github.com/yangg/gist/raw/master/sys-setup.sh | sh
 
 cd ~
 kernel=`uname -s`
@@ -18,29 +19,7 @@ echo 'source ~/.bash_aliases' >> .bash_profile
 
 elif [ $kernel = CYGWIN ]; then
 
-cat > .bash_cygwin <<EOF
-
 # require vim, git, openssh, zip/unzip, wget, curl
-export PATH="/bin:${PATH}"
-
-TT=${TT//\\\\//}   # replace backslash to fowardslash
-if [[ $TT != "" ]]; then
-    cd "$TT"
-    if [[ $LANG != "C.UTF-8" ]]; then
-        mintty &
-        exit
-    fi
-else
-    cd ~
-fi
-
-script_path=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
-source $script_path/.bash_aliases
-PS1=${PS1/\\u@\\h/yangg@idkin}
-
-# vim: ft=sh
-EOF
-
 
 cat > .minttyrc <<EOF
 Font=Consolas
@@ -52,16 +31,11 @@ EOF
 
 cat > .local.vimrc <<EOF
 
-if has("gui_running")
-    let &rtp = substitute(&rtp, 'vimfiles', '.vim', 'g')
-    set guifont=Consolas:h14
-endif
+set guifont=Consolas:h14
 colorscheme eclipse
-autocmd BufWritePre *.js silent!
-            \ execute "'[,']s/".'\(alert\|console\.log\)([^()]\{-})\zs$/;/'
 EOF
 
-echo 'source ~/.bash_cygwin' >> .bashrc
+echo 'source ~/.bash_aliases' >> .bashrc
 
 else
 # Ubuntu
@@ -96,13 +70,18 @@ fi
 curl -Ok https://raw.github.com/yangg/home/master/.gitconfig
 git clone git@github.com:yangg/home.git
 # git clone git://github.com/yangg/home.git
-rm .gitconfig && cd home
-if [ $kernel = CYGWIN ]; then
-    wget -c http://cloud.github.com/downloads/yangg/home/vim-win-patch.zip
-    unzip vim-win-patch.zip && rm $_
+if [ -d "home" ]; then
+    rm .gitconfig && cd home
+    if [ $kernel = CYGWIN ]; then
+        wget -c http://file.uedsky.com/vim-win-patch.zip
+        unzip vim-win-patch.zip && rm $_
+    fi
+    ls -A | xargs -I {} mv -v {} ../
+    cd ../ && rmdir home
+    echo 'Setup complete!'
+else
+    echo 'Cannot clone git files.'
 fi
-ls -A | xargs -I {} mv -v {} ../
-cd ../ && rmdir home
 
 # chnroute
 # http://code.google.com/p/chnroutes/downloads/list
