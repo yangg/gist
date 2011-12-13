@@ -19,6 +19,9 @@ defaults write com.apple.dock expose-cluster-scale -float 1 && killall Dock
 # Set the path bar to be relative home directory in Mac OS X Finder
 defaults write com.apple.finder PathBarRootAtHome -bool true && killall Finder
 
+# Hide the Spotlight Menu Icon in OS X Lion (755 to revert)
+sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search && killall SystemUIServer
+
 launchctl
 
 # git
