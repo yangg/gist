@@ -79,6 +79,10 @@ fi
 # convert from hexadecimal or octal to decimal
 echo $((0x2E)) $((011))
 
+# convert from decimal to hexadecimal
+hex() { bc <<< "obase=16; $1"; }
+hex() { printf "%X\n" $1; }
+
 
 # not mac
 # Convert text to lower or upper case
