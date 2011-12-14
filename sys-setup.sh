@@ -1,5 +1,6 @@
 #!/bin/bash
 # curl -L https://github.com/yangg/gist/raw/master/sys-setup.sh | sh
+# git remote set-url origin git@github.com:yangg/home.git
 
 cd ~
 kernel=`uname -s`
@@ -68,8 +69,7 @@ fi
 
 fi
 curl -Ok https://raw.github.com/yangg/home/master/.gitconfig
-git clone git@github.com:yangg/home.git
-# git clone git://github.com/yangg/home.git
+git clone git://github.com/yangg/home.git
 if [ -d "home" ]; then
     rm .gitconfig && cd home
     if [ $kernel = CYGWIN ]; then
