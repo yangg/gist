@@ -3,9 +3,7 @@
 # git remote set-url origin git@github.com:yangg/home.git
 
 cd ~
-kernel=`uname -s`
-kernel=${kernel:0:6} # Darwin, CYGWIN_NT-6.1, Linux
-if [ $kernel = Darwin ]; then
+if [[ $OSTYPE =~ ^darwin ]]; then
 # Mac
 
 # jsl
@@ -18,14 +16,13 @@ fi
 
 echo 'source ~/.bash_aliases' >> .bash_profile
 
-elif [ $kernel = CYGWIN ]; then
+elif [ $OSTYPE = cygwin ]; then
 
 # require vim, git, openssh, zip/unzip, wget, curl
 
 cat > .minttyrc <<EOF
 Font=Consolas
 FontHeight=12
-CopyAsRTF=no
 Locale=C
 Charset=UTF-8
 EOF
@@ -72,7 +69,7 @@ curl -Ok https://raw.github.com/yangg/home/master/.gitconfig
 git clone git://github.com/yangg/home.git
 if [ -d "home" ]; then
     rm .gitconfig && cd home
-    if [ $kernel = CYGWIN ]; then
+    if [ $OSTYPE = cygwin ]; then
         wget -c http://file.uedsky.com/vim-win-patch.zip
         unzip vim-win-patch.zip && rm $_
     fi
