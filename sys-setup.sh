@@ -67,16 +67,13 @@ if [ "`which google-chrome`" = "" ]; then
 fi
 
 fi
-curl -Os https://raw.github.com/yangg/home/master/.gitconfig
 git clone git://github.com/yangg/home.git
 if [ -d "home" ]; then
-    rm .gitconfig && cd home
+    ls -A home | xargs -I {} mv -v home/{} . && rmdir home
     if [ "$OSTYPE" = cygwin ]; then
         wget -c http://file.uedsky.com/vim-win-patch.zip
         unzip vim-win-patch.zip && rm $_
     fi
-    ls -A | xargs -I {} mv -v {} ../
-    cd ../ && rmdir home
     echo 'Setup complete!'
 else
     echo 'Cannot clone git files.'
