@@ -1,11 +1,11 @@
 #!/bin/bash
-# curl https://raw.github.com/yangg/gist/master/sys-setup.sh | sh
+# curl https://raw.github.com/yangg/gist/master/sys-setup.sh | bash
 # git remote set-url origin git@github.com:yangg/home.git
 
 cd ~
 # echo $OSTYPE
 # darwin11, linux-gnu, cygwin
-if [[ $OSTYPE =~ ^darwin ]]; then
+if [[ "$OSTYPE" =~ ^darwin ]]; then
 # Mac
 
 # jsl
@@ -18,7 +18,7 @@ fi
 
 echo 'source ~/.bash_aliases' >> .bash_profile
 
-elif [ $OSTYPE = cygwin ]; then
+elif [ "$OSTYPE" = cygwin ]; then
 
 # require vim, git, openssh, zip/unzip, wget, curl
 
@@ -71,7 +71,7 @@ curl -Os https://raw.github.com/yangg/home/master/.gitconfig
 git clone git://github.com/yangg/home.git
 if [ -d "home" ]; then
     rm .gitconfig && cd home
-    if [ $OSTYPE = cygwin ]; then
+    if [ "$OSTYPE" = cygwin ]; then
         wget -c http://file.uedsky.com/vim-win-patch.zip
         unzip vim-win-patch.zip && rm $_
     fi
