@@ -1,8 +1,10 @@
 #!/bin/bash
-# curl -L https://github.com/yangg/gist/raw/master/sys-setup.sh | sh
+# curl https://raw.github.com/yangg/gist/master/sys-setup.sh | sh
 # git remote set-url origin git@github.com:yangg/home.git
 
 cd ~
+# echo $OSTYPE
+# darwin11, linux-gnu, cygwin
 if [[ $OSTYPE =~ ^darwin ]]; then
 # Mac
 
@@ -65,7 +67,7 @@ if [ "`which google-chrome`" = "" ]; then
 fi
 
 fi
-curl -Ok https://raw.github.com/yangg/home/master/.gitconfig
+curl -Os https://raw.github.com/yangg/home/master/.gitconfig
 git clone git://github.com/yangg/home.git
 if [ -d "home" ]; then
     rm .gitconfig && cd home
