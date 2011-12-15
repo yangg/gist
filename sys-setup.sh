@@ -90,5 +90,8 @@ fi
 # 2. Disable Keyborad Shortcuts Alt+Space
 # 3. Input Methods Alt+Shift
 
+# uninstall
+# cd && git ls | xargs -I {} rm -r {} && rm -rf .git
+
 exit 0
 # vim: ft=sh
