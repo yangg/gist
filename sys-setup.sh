@@ -88,7 +88,7 @@ fi
 # 3. Input Methods Alt+Shift
 
 # uninstall
-# cd && git ls | xargs -I {} rm -r {} && rm -rf .git
+# cd && [ "`git status -s`" = "" ] && git ls | xargs -I {} rm -r {} && rm -rf .git
 
 exit 0
 # vim: ft=sh
