@@ -32,9 +32,9 @@ expandurl() { curl -sIL $1 | grep ^Location; }
 filext() { echo ${1##*.}; }
 
 # List only the directories
-ls -d */
-find . -type d -maxdepth 1 | sort
-ls -l | grep ^d
+ls -Al | grep ^d
+ls -d */                        # not including hidden items
+find . -maxdepth 1 -type d | sort               # ! -name "."
 
 # Move all files in subdirectories to current dir
 find . -type f -exec mv {} . \;
