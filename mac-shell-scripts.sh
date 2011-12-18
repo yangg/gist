@@ -28,9 +28,10 @@ launchctl
 
 # git
 # http://code.google.com/p/git-osx-installer/downloads/list
-curl http://git-osx-installer.googlecode.com/files/git-1.7.6-i386-snow-leopard.dmg -o git.dmg
-hdiutil attach git.dmg
-GIT_Volume=`ls /Volumes/ | grep Git`
-GIT_pkg=`ls "/Volumes/$GIT_Volume" | grep ^git-`
-sudo installer -pkg "/Volumes/$GIT_Volume/$GIT_pkg" -target /usr/local
-hdiutil detach "/Volumes/$GIT_Volume"
+curl http://git-osx-installer.googlecode.com/files/git-1.7.7.3-intel-universal-snow-leopard.dmg -o git.dmg
+# exclude multiple(1,2) columns using awk
+Volume=`hdiutil attach git.dmg | tail -n 1 | awk '{$1=$2=""}1'`
+Volume=`echo $Volume | sed 's/^\s*//'`
+Pkg=`ls "$Volume" | grep .pkg$`
+sudo installer -pkg "$Volume/$Pkg" -target /usr/local
+hdiutil detach "$Volume"
