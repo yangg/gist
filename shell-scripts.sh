@@ -1,15 +1,17 @@
 # Show the Nth line of file
 sed -n 5p ubuntu-setup.sh
-# *delete a particular line by line number in file
-sed -i 5d ubuntu-setup.sh
 # show a range lines of a file
 sed '6,14!d' ubuntu-setup.sh
 sed -n '6,14p' ubuntu-setup.sh
-# delete all leading and trailing whitespace from each line in file
+# *delete a particular line by line number in file
+sed -i 5d ubuntu-setup.sh
+# *delete all leading and trailing whitespace from each line in file
 sed 's/^\s*//;s/\s*$//' -i file
 
 # Convert HH:MM:SS into seconds
 echo 00:29:36 | awk -F: '{print ($1*3600)+($2*60)+$3}'
+# Print all lines between two line numbers
+awk 'NR >= 3 && NR <= 8' /path/to/file
 
 lsof
 # A Unix Utility You Should Know About: lsof@evernote
