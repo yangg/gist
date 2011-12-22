@@ -69,7 +69,8 @@ fi
 fi
 git clone git://github.com/yangg/home.git
 if [ -d "home" ]; then
-    ls -A home | xargs -I {} mv -v home/{} . && rmdir home
+    # ls -A home | xargs -I {} mv -v home/{} . && rmdir home
+    mv -v home/{*,.??*} ./ && rmdir home
     if [ "$OSTYPE" = cygwin ]; then
         wget -c http://file.uedsky.com/vim-win-patch.zip
         unzip vim-win-patch.zip && rm $_
