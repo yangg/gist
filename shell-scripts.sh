@@ -85,6 +85,12 @@ echo $((0x2E)) $((011))
 hex() { bc <<< "obase=16; $1"; }
 hex() { printf "%X\n" $1; }
 
+# escape UTF-8 characters into their 3-byte format
+escape() {
+    printf "\\\x%s" $(printf "$@" | xxd -p -c1 -u)
+    echo # newline
+}
+
 
 # not mac
 # Convert text to lower or upper case
