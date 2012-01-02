@@ -1,3 +1,6 @@
 [submodule "framenewtab"]
 	path = framenewtab
 	url = git@gist.github.com:1366415.git
+[submodule "js-functions"]
+	path = js-functions
+	url = git@gist.github.com:1499969.git
