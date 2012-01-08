@@ -10,3 +10,4 @@ mac-shell-scripts.sh    Shell scripts for mac only
 hooks               Git hooks
 js-functions        Useful javascript functions
 vim-scripts         Vim scripts
+emacs-scripts       Emacs scripts

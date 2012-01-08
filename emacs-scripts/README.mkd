@@ -1,0 +1,2 @@
+### References
+* [dealing with many buffers: ibuffer] (http://emacs-fu.blogspot.com/2010/02/dealing-with-many-buffers-ibuffer.html)
