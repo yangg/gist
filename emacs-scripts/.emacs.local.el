@@ -8,6 +8,8 @@
 (setq read-buffer-completion-ignore-case t)
 
 (add-hook 'before-save-hook 'time-stamp)
+;; time-stamp-pattern: "4/Last Modified: %3b %:d, %:y\n"
+
 (setq mouse-buffer-menu-mode-mult 1)
 
 (setq-default abbrev-mode t)
