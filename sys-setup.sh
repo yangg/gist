@@ -43,7 +43,9 @@ else
 # update package resource
 sudo apt-get update && sudo apt-get upgrade
 # install software
-sudo apt-get install -y git vim-gnome ctags curl xclip
+sudo apt-get install -y git vim-gnome ctags curl xclip most
+sudo update-alternatives --set pager /usr/bin/most
+
 # emacs
 # sudo apt-get install -y emacs23
 # javascript lint for Vim
