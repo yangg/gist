@@ -7,11 +7,18 @@ sed -n '6,14p' ubuntu-setup.sh
 sed -i 5d ubuntu-setup.sh
 # *delete all leading and trailing whitespace from each line in file
 sed 's/^\s*//;s/\s*$//' -i file
+# *remove comment from files
+sed -e '/^#/d' -e 's/#.*$//' -i file
+# *delete last line of a file if it is blank
+sed '${/^$/d}' -i file
 
 # Convert HH:MM:SS into seconds
 echo 00:29:36 | awk -F: '{print ($1*3600)+($2*60)+$3}'
 # Print all lines between two line numbers
 awk 'NR >= 3 && NR <= 8' /path/to/file
+# Rank top 10 most frequently used commands
+history | awk '{print $2}' | sort | uniq -c | sort -rn | head
+history | cut -c8- | sort | uniq -c | sort -rn | head
 
 lsof
 # A Unix Utility You Should Know About: lsof@evernote
