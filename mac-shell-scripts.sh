@@ -24,7 +24,12 @@ defaults write com.apple.dock double-tap-jump-back -bool true && killall Dock
 # Hide the Spotlight Menu Icon in OS X Lion (755 to revert)
 sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search && killall SystemUIServer
 
+# Stopping Spotlight from Indexing External Drives
+mdutil -i off /Volumes/VolumeName
+
 launchctl
+# disable/reenable spotlight
+sudo launchctl unload/load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
 
 # git
 # http://code.google.com/p/git-osx-installer/downloads/list
