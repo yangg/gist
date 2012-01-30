@@ -22,3 +22,9 @@
 (setq browse-url-generic-program "x-www-browser"
       ;;(substring (shell-command-to-string "gconftool-2 -g /desktop/gnome/applications/browser/exec") 0 -1)
       browse-url-browser-function 'browse-url-generic)
+
+(setq tags-file-name "~/Project/TAGS")
+;; M-.      find-tag
+;; C-u M-.  universal-argument, find next tag
+;; M-*      pop-tag-mark, pop back to where M-. was last invoked
+;; M-TAB    complete-symbol
