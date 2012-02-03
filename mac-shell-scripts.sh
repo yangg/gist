@@ -24,8 +24,13 @@ defaults write com.apple.dock double-tap-jump-back -bool true && killall Dock
 # Hide the Spotlight Menu Icon in OS X Lion (755 to revert)
 sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search && killall SystemUIServer
 
+# Splitlight
 # Stopping Spotlight from Indexing External Drives
 mdutil -i off /Volumes/VolumeName
+# Reindexing Spotlight
+sudo mdutil -E /Volumes/Macintosh\ HD/
+# Individually Reindexing Selected Files
+mdimport folder/or/file
 
 launchctl
 # disable/reenable spotlight
