@@ -1,10 +1,15 @@
 # Show the Nth line of file
-sed -n 5p ubuntu-setup.sh
+sed -n 5p file
 # show a range lines of a file
-sed '6,14!d' ubuntu-setup.sh
-sed -n '6,14p' ubuntu-setup.sh
+sed '6,14!d' file
+sed -n '6,14p' file
+# remove a range of lines from a file
+sed '3,7d' -i file
+vi +'3,7d' +x file
+vi +{end..start} +x file
 # *delete a particular line by line number in file
-sed -i 5d ubuntu-setup.sh
+sed 5d -i file
+vi +5d +x file
 # *delete all leading and trailing whitespace from each line in file
 sed 's/^\s*//;s/\s*$//' -i file
 # *remove comment from files
