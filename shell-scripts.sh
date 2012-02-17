@@ -30,8 +30,12 @@ lsof
 
 uptime # http://www.ruanyifeng.com/blog/2011/07/linux_load_average_explained.html
 fc
+Ctrl-Z / bg / jobs / fg
 last reboot
 whois uedsky.com
+ps -ef
+killall -9 [processname]
+xkill
 
 # Multiple variable assignments from command output in BASH
 read day month year <<< $(date +'%d %m %y')
