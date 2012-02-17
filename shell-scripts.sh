@@ -107,6 +107,10 @@ escape() {
     echo # newline
 }
 
+# sha1 & md5
+openssl sha1/md5 file
+shasum/md5 file
+
 
 # not mac
 # Convert text to lower or upper case
