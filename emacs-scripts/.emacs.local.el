@@ -28,3 +28,38 @@
 ;; C-u M-.  universal-argument, find next tag
 ;; M-*      pop-tag-mark, pop back to where M-. was last invoked
 ;; M-TAB    complete-symbol
+
+(defun my-php-symbol-lookup ()
+  (interactive)
+  (let ((symbol (symbol-at-point)))
+    (if (not symbol)
+        (message "No symbol at point.")
+      (browse-url (concat "http://php.net/manual-lookup.php?pattern="
+                          (symbol-name symbol))))))
+
+(defun set-mode ()
+  "set multi-mode"
+  (interactive)
+  (save-excursion
+    (if (re-search-backward "</script>\\|\\?>\\|</style>\\|<script[^>]*>\\|<\\?\\|<style[^>]*>\\|<[^>]+>\\(['\"]?\\)" nil t)
+        (let ((res (match-string 0))
+              (new-mode nil))
+          (cond ((equal res "<?") (setq new-mode 'php-mode))
+                ((string-match "^<script" res) (setq new-mode 'js-mode))
+                ((string-match "^<style" res) (setq new-mode 'css-mode))
+                (t (setq new-mode 'html-mode)))
+          (and (eq new-mode 'html-mode)
+               (> (length (match-string 1)) 0)
+               (setq new-mode 'js-mode))
+          (or (eq new-mode major-mode)
+              (funcall new-mode))))))
+(defun php-newline ()
+  (interactive)
+  (if (string-match "views\\(/[a-zA-Z0-9_]+\\)+\\.php$\\|\\.[sp]?html$" buffer-file-truename)
+      (set-mode))
+  (newline-and-indent))
+(global-set-key (kbd "RET") 'php-newline)
+(add-hook 'php-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "<f1>") 'my-php-symbol-lookup)
+             (setq php-warned-bad-indent t)))
