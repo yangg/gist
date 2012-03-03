@@ -46,8 +46,10 @@ sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install -y git vim-gnome ctags curl xclip most
 sudo update-alternatives --set pager /usr/bin/most
 
-# emacs
-# sudo apt-get install -y emacs23
+# ext
+# sudo apt-get install -y emacs23 emacs23-el
+# sudo apt-get install -y gimp gimp-help-en gpick gwenview tomboy
+
 # javascript lint for Vim
 if [ "`which jsl`" = "" ]; then
     curl http://www.javascriptlint.com/download/jsl-0.3.0-src.tar.gz | tar xzf -
