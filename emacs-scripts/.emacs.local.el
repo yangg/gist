@@ -19,6 +19,7 @@
 ;; set default browser
 ;; (browse-url)
 ;; (browse-url-of-buffer)
+;; (browse-url-emacs)
 (setq browse-url-generic-program "x-www-browser"
       ;;(substring (shell-command-to-string "gconftool-2 -g /desktop/gnome/applications/browser/exec") 0 -1)
       browse-url-browser-function 'browse-url-generic)
@@ -41,7 +42,7 @@
   "set multi-mode"
   (interactive)
   (save-excursion
-    (if (re-search-backward "</script>\\|\\?>\\|</style>\\|<script[^>]*>\\|<\\?\\|<style[^>]*>\\|<[^>]+>\\(['\"]?\\)" nil t)
+    (if (re-search-backward "</script>\\|\\?>\\|</style>\\|<script[^>]*>\\|<\\?\\|<style[^>]*>\\|<\sw+[^>]*>\\(['\"]?\\)" nil t)
         (let ((res (match-string 0))
               (new-mode nil))
           (cond ((equal res "<?") (setq new-mode 'php-mode))
