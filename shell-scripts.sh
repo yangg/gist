@@ -111,6 +111,19 @@ escape() {
 openssl sha1/md5 file
 shasum/md5 file
 
+# Create ISO images from the Command Line @ http://git.to/iso
+# create an ISO with hdiutil
+hdiutil makehybrid -iso -joliet -o images.iso /path/to/source
+# making an ISO with dd
+# Use the `diskutil list' command to discover the disks identifier that you will need to make an ISO with dd from.
+dd if=/dev/disk1 of=/destination/path/image.iso
+# burn an ISO with dd
+dd if=/path/to/image.iso of=/dev/disk1
+# convert a DMG file to ISO
+hdiutil convert /path/imagefile.dmg -format UDTO -o /path/convertedimage.iso
+# convert a ISO file to DMG format
+hdiutil convert /path/imagefile.iso -format UDRW -o /path/convertediamge.dmg
+
 
 # not mac
 # Convert text to lower or upper case
