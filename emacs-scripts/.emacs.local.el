@@ -16,13 +16,15 @@
 (when (file-exists-p abbrev-file-name)
   (quietly-read-abbrev-file))
 
+(add-to-list 'directory-abbrev-alist '("^/shortname" . "/ssh:username@host:dir"))
+
 ;; set default browser
 ;; (browse-url)
 ;; (browse-url-of-buffer)
 ;; (browse-url-emacs)
 (setq browse-url-generic-program "x-www-browser"
-      ;;(substring (shell-command-to-string "gconftool-2 -g /desktop/gnome/applications/browser/exec") 0 -1)
       browse-url-browser-function 'browse-url-generic)
+      ;;(substring (shell-command-to-string "gconftool-2 -g /desktop/gnome/applications/browser/exec") 0 -1)
 
 (setq tags-file-name "~/Project/TAGS")
 ;; M-.      find-tag
