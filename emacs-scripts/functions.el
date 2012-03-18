@@ -1,10 +1,16 @@
-(directory-files lisp-path)
 (following-char) (preceding-char)
 (char-after)
 (skip-chars-forward)
 
 (bury-buffer)
 (browser-url)
+
+(expand-file-name)
+(file-name-as-directory)                ; append a slash
+(directory-file-name)                   ; remove final slash
+(file-name-directory)                   ; directory component
+(file-name-nondirectory)                ; filename
+(directory-files)                       ; get files list in a directory
 
 emacs -batch -f batch-byte-compile thefile.el
 

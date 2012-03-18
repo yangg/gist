@@ -34,7 +34,8 @@ Ctrl-Z / bg / jobs / fg
 last reboot
 whois uedsky.com
 ps -ef
-killall -9 [processname]
+killall [processname]
+kill -9 [pid]
 xkill
 
 # Multiple variable assignments from command output in BASH
@@ -123,6 +124,9 @@ dd if=/path/to/image.iso of=/dev/disk1
 hdiutil convert /path/imagefile.dmg -format UDTO -o /path/convertedimage.iso
 # convert a ISO file to DMG format
 hdiutil convert /path/imagefile.iso -format UDRW -o /path/convertediamge.dmg
+
+# grep tab
+grep $'\t' file.txt
 
 
 # not mac

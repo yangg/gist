@@ -20,6 +20,8 @@ defaults write com.apple.dock expose-cluster-scale -float 1 && killall Dock
 defaults write com.apple.finder PathBarRootAtHome -bool true && killall Finder
 # Jump to the most recently used desktop space
 defaults write com.apple.dock double-tap-jump-back -bool true && killall Dock
+# Change the Default File Name of Screen Shots
+defaults write com.apple.screencapture name OSXDaily && killall SystemUIServer
 
 # Hide the Spotlight Menu Icon in OS X Lion (755 to revert)
 sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search && killall SystemUIServer
