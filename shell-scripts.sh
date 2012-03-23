@@ -45,7 +45,7 @@ read day month year <<< $(date +'%d %m %y')
 upto() { cd "${PWD/\/$@\/*//$@}"; }
 
 # Expand shortened URLs: show what site a shortened URL is pointing to, even if there are many nested shortened URLs
-expandurl() { curl -sIL $1 | grep ^Location; }
+expandurl() { curl -sIL $1 | grep ^Location | cut -c11-; }
 
 # Extract extention of a file
 filext() { echo ${1##*.}; }
@@ -97,6 +97,7 @@ fi
 
 # convert from hexadecimal or octal to decimal
 echo $((0x2E)) $((011))
+hexdec() { bc <<< "obase=10; ibase=16; $1"; }
 
 # convert from decimal to hexadecimal
 hex() { bc <<< "obase=16; $1"; }
@@ -129,8 +130,10 @@ hdiutil convert /path/imagefile.iso -format UDRW -o /path/convertediamge.dmg
 grep $'\t' file.txt
 
 
-# not mac
 # Convert text to lower or upper case
+tr '[:upper:]' '[:lower:]'
+awk '{print tolower($0)}'
+# not mac
 upper() { echo ${@^^}; }
 lower() { echo ${@,,}; }
 

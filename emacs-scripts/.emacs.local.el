@@ -1,3 +1,5 @@
+;;-*-mode: emacs-lisp;-*-
+
 (desktop-save-mode t)
 (setq desktop-load-locked-desktop nil)
 (add-hook 'desktop-not-loaded-hook 'desktop-save-mode-off)
