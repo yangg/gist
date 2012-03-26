@@ -72,9 +72,15 @@ fi
 
 fi
 git clone git://github.com/yangg/home.git
-if [ -d "home" ]; then
+if [ "$?" -eq 0 ]; then
+    # backup before overwrite, no -b for mv in osx
+    for file in $(ls -A home); do
+        msg=$([ -e "$file" ] && mv "$file"{,~} && echo " (backup: \`$file~')")
+        echo "$(mv -v "home/$file" .)$msg"
+    done
+    rmdir home
     # ls -A home | xargs -I {} mv -v home/{} . && rmdir home
-    mv -v home/{*,.??*} ./ && rmdir home
+    # mv -v home/{*,.??*} ./ && rmdir home
     if [ "$OSTYPE" = cygwin ]; then
         wget -c http://file.uedsky.com/vim-win-patch.zip
         unzip vim-win-patch.zip && rm $_
