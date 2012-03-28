@@ -60,6 +60,7 @@ git apply --stat  test.patch
 git apply --check test.patch
 git am --signoff < test.patch
 
+git log --follow <path/to/renamed/file>
 git log --name-only -1
 git log --name-status -1
 git log --stat -1
