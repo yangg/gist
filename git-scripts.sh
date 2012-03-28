@@ -29,8 +29,27 @@ git submodule update --init --recursive
 # force to push after remote reset
 git push --force origin
 
+# push specific commit
+git push origin <commit sha>:master
+
 # remove all deleted files from the project
 git rm $(git ls-files --deleted)
+
+# git tags
+git tag -a/s v1.0 -m 'tag message' [{revision}]
+git push --tags
+
+# Remove a specific revision
+git rebase -i <after-this-commit>
+git rebase --onto master~3 master~2 master
+# Before:
+1---2---3---4---5  master
+# After:
+1---2---4'---5' master
+
+# package
+git archive -o package.zip/tar HEAD
+git archive --format=tar [--prefix=folder/] HEAD | gzip > package.tar.gz
 
 # Print lines matching a pattern
 git grep -w -e ${word}
