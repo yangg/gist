@@ -129,6 +129,15 @@ hdiutil convert /path/imagefile.iso -format UDRW -o /path/convertediamge.dmg
 # grep tab
 grep $'\t' file.txt
 
+# Get Gateway http://chnroutes.googlecode.com/files/chnroutes.py
+# linux
+ip route show | grep ^default | sed -e 's/default via \([^ ]*\).*/\1/'
+# mac
+netstat -nr | grep ^default | grep -v 'ppp' | awk '{print $2}'
+# win
+@echo off
+for /F "tokens=3" %%* in ('route print ^| findstr "\<0.0.0.0\>"') do set "gw=%%*"
+
 
 # Convert text to lower or upper case
 tr '[:upper:]' '[:lower:]'
