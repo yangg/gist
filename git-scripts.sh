@@ -85,3 +85,11 @@ wip = !"git add -A; git ls-files --deleted -z | xargs -0 git rm; git commit -m \
 unwip = !"git log -n 1 | grep -q -c wip && git reset HEAD~1"
 # The wip allows for a quick way to add all new and modified files to the index, while cleaning the index from the files removed from the working tree.
 # The unwip will restore the deleted files to the working tree!
+
+# Github Secrets https://github.com/blog/967-github-secrets
+# whitespace ?w=1
+# cross-repository issue references user/repository#issuenumber
+# .diff or .patch Add at the end fo the URL for a commit page, Pull Requrest or Compare View
+# t     Actives the file finder
+# l     Jump to line
+# w     Switch branch/tag
