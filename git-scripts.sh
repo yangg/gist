@@ -1,11 +1,16 @@
-# delete remote branch / remove github pages
-git push origin :gh-pages
+git add | branch | checkout | clone | commit | diff | fetch | grep | init
+    | log | merge | mv | pull | push | rebase | reset | rm | show | status | tag
+    | clean | revert | whatchanged | config | stash | archive | remote | submodule
+    | reflog | bisect | blame
+    | ls-files | filter-branch | cherry-pick | rev-parse | ls-tree | format-patch
+# More: http://searchco.de/lists/list-of-git-commands
 
 # reset commits
 git reset --hard HEAD~3
 # HEAD, HEAD^, and HEAD~2
 # undo merge
 git reset --hard origin/master
+git reset --hard ORIG_HEAD
 
 #  reverts the Makefile to two revisions back
 git checkout master~2 Makefile
@@ -13,24 +18,35 @@ git checkout master~2 Makefile
 # Chinese filename
 git config core.quotepath false
 
-# Undo a `git push`
-git push -f origin HEAD^:master
-
-
 git remote add origin git@github.com:yangg/home.git
 git push -u origin master
 
-git push origin withemacs
 # tracking branch
 git checkout --track origin/withemacs
 
 git submodule update --init --recursive
 
-# force to push after remote reset
-git push --force origin
+gitk
+git mergetool
+git instaweb --httpd=webrick
 
+# revision
+HEAD        usually points to the currently checked out branch.
+ORIG_HEAD   is previous state of HEAD
+
+# rev-parse
+git rev-parse --show-toplevel / --is-inside-work-tree
+
+# push
+git push REMOTENAME BRANCHNAME
+git push REMOTENAME LOCALBRANCHNAME:REMOTEBRANCHNAME
+# Deleting a remote branch or tag(remove github pages)
+git push origin :gh-pages   # telling git “push nothing into BRANCHNAME on REMOTENAME”.
+git branch -d -r <remote-branch>
 # push specific commit
 git push origin <commit sha>:master
+# Undo a `git push`
+git push -f origin HEAD^:master
 
 # remove all deleted files from the project
 git rm $(git ls-files --deleted)
@@ -85,6 +101,25 @@ wip = !"git add -A; git ls-files --deleted -z | xargs -0 git rm; git commit -m \
 unwip = !"git log -n 1 | grep -q -c wip && git reset HEAD~1"
 # The wip allows for a quick way to add all new and modified files to the index, while cleaning the index from the files removed from the working tree.
 # The unwip will restore the deleted files to the working tree!
+
+# filter-branch
+# Remove sensitive data http://help.github.com/remove-sensitive-data/
+git filter-branch --index-filter 'git rm --cached --ignore-unmatch path/to/file' --prune-empty -- --all
+# Split a subpath into a new branch or repo
+git filter-branch --prune-empty --subdirectory-filter lib master
+# change author
+git filter-branch --env-filter '
+if [ "$GIT_COMMITTER_EMAIL" = "old@gmail.com" ]; then
+    GIT_COMMITTER_EMAIL="new@gmail.com"
+fi
+'
+# GIT_AUTHOR_NAME
+# GIT_AUTHOR_EMAIL
+# GIT_COMMITTER_NAME
+# GIT_COMMITTER_EMAIL
+
+# remote
+git remote add | rename | rm | set-url
 
 # Github Secrets https://github.com/blog/967-github-secrets
 # whitespace ?w=1
