@@ -1,8 +1,0 @@
-
-function! PathConvert(path)
-    let path = a:path
-    let path = has('win32unix') ? substitute(path, '^\(\a\):', '/cygdrive/\1', '') : substitute(path, '^/cygdrive/\(\a\)', '\1:', '')
-    return path
-endfunction
-
-" vim: ft=vim
