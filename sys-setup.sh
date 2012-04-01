@@ -43,7 +43,7 @@ else
 # update package resource
 sudo apt-get update && sudo apt-get upgrade
 # install software
-sudo apt-get install -y git vim-gnome ctags curl xclip most
+sudo apt-get install -y git vim-gnome ctags curl xclip most tmux
 sudo update-alternatives --set pager /usr/bin/most
 
 # ext
@@ -90,8 +90,19 @@ else
     echo 'Cannot clone git files.'
 fi
 
-# chnroute
-# http://code.google.com/p/chnroutes/downloads/list
+# chnroute http://code.google.com/p/chnroutes/wiki/Usage
+OSNAME=$(echo $OSTYPE | sed 's/darwin/mac/;s/.*\(mac\|linux\|win\).*/\1/')
+curl -O http://chnroutes.googlecode.com/files/chnroutes.py
+python chnroutes.py -p $OSNAME
+if [ "$OSNAME" = mac ]; then
+    chmod +x ip-up ip-down
+    sudo mv -v ip-up ip-down /etc/ppp
+elif [ "$OSNAME" = linux ]; then
+    chmod +x ip-pre-up ip-down
+    sudo mv -vb ip-pre-up /etc/ppp
+    sudo mv -vb ip-down /etc/ppp/ip-down.d
+fi
+rm chnroutes.py
 
 # ubuntu
 # 1. Disable menu access keys : Terminal - Edit - Keyboard Shortcuts
