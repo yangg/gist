@@ -74,6 +74,9 @@ dig +short myip.opendns.com @resolver1.opendns.com
 # Your GeoIP location on Google Maps
 curl -s http://geoiplookup.wikimedia.org/|awk -F, '{print $3,$4}'|awk -F'"' '{print "http://maps.google.com/maps?q="$4 "," $8}'
 
+# List your MACs address
+ifconfig eth0 | grep -oE '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}'
+
 #
 du -h -d 1
 du -h --max-depth=1 | sort -rh
