@@ -9,7 +9,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
 # Mac
 
 # jsl
-if [ "`which jsl`" = "" ]; then
+if [ -n "`which jsl`" ]; then
     curl http://www.javascriptlint.com/download/jsl-0.3.0-mac.tar.gz | tar xzf -
     mv jsl-* jsl-latest
     sudo cp jsl-latest/jsl /usr/local/bin
@@ -51,7 +51,7 @@ sudo update-alternatives --set pager /usr/bin/most
 # sudo apt-get install -y gimp gimp-help-en gpick gwenview tomboy
 
 # javascript lint for Vim
-if [ "`which jsl`" = "" ]; then
+if [ -n "`which jsl`" ]; then
     curl http://www.javascriptlint.com/download/jsl-0.3.0-src.tar.gz | tar xzf -
     mv jsl-* jsl-latest
     pushd $(pwd)
@@ -64,7 +64,7 @@ if [ "`which jsl`" = "" ]; then
     rm -r jsl-latest
 fi
 # google-chrome
-if [ "`which google-chrome`" = "" ]; then
+if [ -n "`which google-chrome`" ]; then
     wget -c https://dl-ssl.google.com/linux/direct/google-chrome-stable_current_i386.deb
     sudo dpkg -i google-chrome-stable_current_i386.deb && rm $_
     sudo apt-get install -y -f
@@ -91,7 +91,7 @@ else
 fi
 
 # chnroute http://code.google.com/p/chnroutes/wiki/Usage
-OSNAME=$(echo $OSTYPE | sed 's/darwin/mac/;s/.*\(mac\|linux\|win\).*/\1/')
+OSNAME=$(echo $OSTYPE | sed 's/darwin.*/mac/;s/.*\(linux\|win\).*/\1/')
 curl -O http://chnroutes.googlecode.com/files/chnroutes.py
 python chnroutes.py -p $OSNAME
 if [ "$OSNAME" = mac ]; then
@@ -110,7 +110,7 @@ rm chnroutes.py
 # 3. Input Methods Alt+Shift
 
 # uninstall
-# cd && [ "`git status -s`" = "" ] && git ls | xargs -I {} rm -r {} && rm -rf .git
+# cd && [ -n "`git status -s`" ] && git ls -z | xargs -0 rm -r {} && rm -rf .git
 
 exit 0
 # vim: ft=sh
