@@ -1,7 +1,7 @@
 takeown /f "%1" & icacls "%1" /grant administrators:F
 
 ;; add Environment
-reg add "HKLM\SYSTEM\ControlSet001\Control\Session Manager\Environment" /v VIMBIN /t REG_GZ /d "%%USERPROFILE%%/.vim/vimbin"
+reg add "HKLM\SYSTEM\ControlSet001\Control\Session Manager\Environment" /v VIMBIN /t REG_SZ /d "%%USERPROFILE%%/.vim/vimbin"
 
 ;; Using batch parameters
 ;; http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/percent.mspx?mfr=true

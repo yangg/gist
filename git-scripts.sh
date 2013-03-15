@@ -14,6 +14,9 @@ git reset --hard ORIG_HEAD
 
 #  reverts the Makefile to two revisions back
 git checkout master~2 Makefile
+#
+git checkout --ours path/to/file
+git checkout --theris path/to/file
 
 # Chinese filename
 git config core.quotepath false
@@ -24,6 +27,7 @@ git push -u origin master
 # tracking branch
 git checkout --track origin/withemacs
 
+git clone --recursive
 git submodule update --init --recursive
 
 gitk
@@ -77,10 +81,10 @@ git apply --check test.patch
 git am --signoff < test.patch
 
 git log --follow <path/to/renamed/file>
-git log --name-only -1
-git log --name-status -1
-git log --stat -1
-git whatchanged -1
+git log --name-only
+git log --name-status
+git log --stat
+git whatchanged
 
 git log -g
 git log --author=yangg --since="2011/8/3 00:00" --reverse --pretty=%s

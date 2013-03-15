@@ -19,6 +19,7 @@ sed '${/^$/d}' -i file
 
 # Convert HH:MM:SS into seconds
 echo 00:29:36 | awk -F: '{print ($1*3600)+($2*60)+$3}'
+echo 00:29:36 | sed s/:/*60+/g | bc
 # Print all lines between two line numbers
 awk 'NR >= 3 && NR <= 8' /path/to/file
 # Rank top 10 most frequently used commands
@@ -58,7 +59,7 @@ find . -maxdepth 1 -type d | sort               # ! -name "."
 # Move all files in subdirectories to current dir
 find . -type f -exec mv {} . \;
 
-＃ print multiplication formulas
+# print multiplication formulas
 seq 9 | sed 'H;g' | awk -v RS='' '{for(i=1;i<=NF;i++)printf("%dx%d=%d%s", i, NR, i*NR, i==NR?"\n":"\t")}'
 
 # Rename all (jpg) files written as 3 number in 4 numbers.
@@ -85,6 +86,7 @@ du --max-depth=1 | sort -nr | awk '{suffs="k M G"; N=split(suffs,suff," "); for(
 # copy to clipboard
 cat .ssh/id_rsa.pub | pbcopy
 xclip -sel clip < ~/.ssh/id_rsa.pub
+xclip < ~/.ssh/id_rsa.pub
 
 # ascii digital click(@require sysvbanner)
 watch -tn1 'date +%T | xargs banner'
@@ -140,6 +142,18 @@ netstat -nr | grep ^default | grep -v 'ppp' | awk '{print $2}'
 # win
 @echo off
 for /F "tokens=3" %%* in ('route print ^| findstr "\<0.0.0.0\>"') do set "gw=%%*"
+
+# named parameters in bash
+myfunc() {
+    local $*;
+    echo "name=$name, pwd=$pwd";
+}
+
+# How to find non-ASCII characters in a file
+grep --color=auto -Pn "[\x80-\xFF]"
+
+# Find biggest 10 files
+find . -type f -print0 | xargs -0 du -h | sort -hr | head
 
 
 # Convert text to lower or upper case

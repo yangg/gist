@@ -34,9 +34,18 @@ sudo mdutil -E /Volumes/Macintosh\ HD/
 # Individually Reindexing Selected Files
 mdimport folder/or/file
 
+# Sleep from the command line
+pmset sleepnow
+osascript -e 'tell application "System Events" to Sleep'
+
 launchctl
 # disable/reenable spotlight
 sudo launchctl unload/load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
+
+# Show Download History List of All Files Ever Downloaded Within Mac OS X
+sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'select LSQuarantineDataURLString from LSQuarantineEvent'
+# delete
+sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'
 
 # git
 # http://code.google.com/p/git-osx-installer/downloads/list
