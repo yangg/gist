@@ -23,7 +23,7 @@ echo 00:29:36 | sed s/:/*60+/g | bc
 # Print all lines between two line numbers
 awk 'NR >= 3 && NR <= 8' /path/to/file
 # Rank top 10 most frequently used commands
-history | awk '{print $2}' | sort | uniq -c | sort -rn | head
+history | awk '{if ($2 == "sudo") a[$3]++; else a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
 history | cut -c8- | sort | uniq -c | sort -rn | head
 
 lsof

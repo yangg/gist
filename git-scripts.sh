@@ -111,6 +111,8 @@ unwip = !"git log -n 1 | grep -q -c wip && git reset HEAD~1"
 git filter-branch --index-filter 'git rm --cached --ignore-unmatch path/to/file' --prune-empty -- --all
 # Split a subpath into a new branch or repo
 git filter-branch --prune-empty --subdirectory-filter lib master
+# Creating a Branch from a Stash
+git stash branch branchfromstash
 # change author
 git filter-branch --env-filter '
 if [ "$GIT_COMMITTER_EMAIL" = "old@gmail.com" ]; then
