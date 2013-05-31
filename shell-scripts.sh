@@ -155,6 +155,10 @@ grep --color=auto -Pn "[\x80-\xFF]"
 # Find biggest 10 files
 find . -type f -print0 | xargs -0 du -h | sort -hr | head
 
+# Delete file via inode number
+ls -i
+find . -inum xxxx -exec rm -rf {} \;
+
 
 # Convert text to lower or upper case
 tr '[:upper:]' '[:lower:]'
