@@ -43,11 +43,10 @@ else
 # update package resource
 sudo apt-get update && sudo apt-get upgrade
 # install software
-sudo apt-get install -y git vim-gnome ctags curl xclip most tmux
-sudo update-alternatives --set pager /usr/bin/most
+sudo apt-get install -y git vim-gnome ctags curl xclip tmux emacs24 emacs24-el awesome privoxy python-gevent python-pip rxvt-unicode xautolock
 
 # ext
-# sudo apt-get install -y emacs23 emacs23-el
+# sudo apt-get install -y 
 # sudo apt-get install -y gimp gimp-help-en gpick gwenview tomboy
 
 # javascript lint for Vim
@@ -65,8 +64,8 @@ if [ -n "`which jsl`" ]; then
 fi
 # google-chrome
 if [ -n "`which google-chrome`" ]; then
-    wget -c https://dl-ssl.google.com/linux/direct/google-chrome-stable_current_i386.deb
-    sudo dpkg -i google-chrome-stable_current_i386.deb && rm $_
+    wget -c https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo dpkg -i google-chrome-stable_current_amd64.deb && rm $_
     sudo apt-get install -y -f
 fi
 
