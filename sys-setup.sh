@@ -9,7 +9,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
 # Mac
 
 # jsl
-if [ -n "`which jsl`" ]; then
+if [ -z "`which jsl`" ]; then
     curl http://www.javascriptlint.com/download/jsl-0.3.0-mac.tar.gz | tar xzf -
     mv jsl-* jsl-latest
     sudo cp jsl-latest/jsl /usr/local/bin
@@ -21,6 +21,7 @@ echo 'source ~/.bash_aliases' >> .bash_profile
 elif [ "$OSTYPE" = cygwin ]; then
 
 # require vim, git, openssh, zip/unzip, wget, curl
+# git config --global color.diff always
 
 cat > .minttyrc <<EOF
 Font=Consolas
@@ -43,14 +44,22 @@ else
 # update package resource
 sudo apt-get update && sudo apt-get upgrade
 # install software
-sudo apt-get install -y git vim-gnome ctags curl xclip tmux emacs24 emacs24-el awesome privoxy python-gevent python-pip rxvt-unicode xautolock
+sudo apt-get install -y git vim-gnome ctags curl xclip tmux emacs24 emacs24-el awesome rxvt-unicode xautolock
 
 # ext
-# sudo apt-get install -y 
-# sudo apt-get install -y gimp gimp-help-en gpick gwenview tomboy
+# sudo apt-get install -y incron ssh privoxy python-gevent python-pip
+# sudo apt-get install -y nginx php4-cli php5-fpm php5-mysql php5-curl mysql-server mysql-client python-mysql.connector
+# sudo apt-get install -y gimp gimp-help-en gpick gwenview
+
+# google-chrome
+if [ -z "`which google-chrome`" ]; then
+    wget -c https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo dpkg -i google-chrome-stable_current_amd64.deb && rm $_
+    sudo apt-get install -y -f
+fi
 
 # javascript lint for Vim
-if [ -n "`which jsl`" ]; then
+if [ -z "`which jsl`" ]; then
     curl http://www.javascriptlint.com/download/jsl-0.3.0-src.tar.gz | tar xzf -
     mv jsl-* jsl-latest
     pushd $(pwd)
@@ -62,13 +71,6 @@ if [ -n "`which jsl`" ]; then
     popd
     rm -r jsl-latest
 fi
-# google-chrome
-if [ -n "`which google-chrome`" ]; then
-    wget -c https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    sudo dpkg -i google-chrome-stable_current_amd64.deb && rm $_
-    sudo apt-get install -y -f
-fi
-
 fi
 git clone git://github.com/yangg/home.git
 if [ "$?" -eq 0 ]; then
@@ -109,7 +111,7 @@ rm chnroutes.py
 # 3. Input Methods Alt+Shift
 
 # uninstall
-# cd && [ -n "`git status -s`" ] && git ls -z | xargs -0 rm -r {} && rm -rf .git
+# cd && [ -z "`git status -s`" ] && git ls -z | xargs -0 rm -r {} && rm -rf .git
 
 exit 0
 # vim: ft=sh
