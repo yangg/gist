@@ -44,10 +44,11 @@ else
 # update package resource
 sudo apt-get update && sudo apt-get upgrade
 # install software
-sudo apt-get install -y git vim-gnome ctags curl xclip tmux emacs24 emacs24-el awesome rxvt-unicode xautolock
+sudo apt-get install -y git vim-gnome ctags curl xclip tmux emacs24 emacs24-el\
+    awesome rxvt-unicode xautolock scrot xfce4-mixer
 
 # ext
-# sudo apt-get install -y incron ssh privoxy python-gevent python-pip
+# sudo apt-get install -y incron ssh privoxy python-pip
 # sudo apt-get install -y nginx php4-cli php5-fpm php5-mysql php5-curl mysql-server mysql-client python-mysql.connector
 # sudo apt-get install -y gimp gimp-help-en gpick gwenview
 

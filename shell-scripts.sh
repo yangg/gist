@@ -159,6 +159,8 @@ find . -type f -print0 | xargs -0 du -h | sort -hr | head
 ls -i
 find . -inum xxxx -exec rm -rf {} \;
 
+# set ff=unix & retab
+find . -type f -regex '.*\.\(php\|js\|css\)' -exec vim --noplugin +'set ff=unix' +'set fenc=utf-8' +'%retab!' +x {} \;
 
 # Convert text to lower or upper case
 tr '[:upper:]' '[:lower:]'
@@ -169,6 +171,9 @@ lower() { echo ${@,,}; }
 
 # Selecting a random file/folder of a folder
 ls -1 | shuf -n 1
+
+# Set primary monitor
+xrandr --output VGA-0 --primary
 
 
 # mac
