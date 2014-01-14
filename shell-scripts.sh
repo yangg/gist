@@ -175,6 +175,16 @@ ls -1 | shuf -n 1
 # Set primary monitor
 xrandr --output VGA-0 --primary
 
+# rand
+tr -dc "A-Z2-9" < /dev/urandom | head -c 16 | xargs
+
+# disk w/r speed (oflag=dsync)
+dd if=/dev/zero of=tmp.img bs=1M count=1024 conv=fdatasync
+dd if=tmp.img of=/dev/null bs=1M
+
+#
+watch dig v2ex.com
+
 
 # mac
 # open Finder in terminal

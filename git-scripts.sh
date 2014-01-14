@@ -29,6 +29,7 @@ git checkout --track origin/withemacs
 
 git clone --recursive
 git submodule update --init --recursive
+git pull --recurse-submodules
 
 gitk
 git mergetool
