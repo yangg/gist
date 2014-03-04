@@ -19,6 +19,7 @@ git checkout --ours path/to/file
 git checkout --theris path/to/file
 
 # Chinese filename
+alias ls='ls --show-control-chars'
 git config core.quotepath false
 
 git remote add origin git@github.com:yangg/home.git
