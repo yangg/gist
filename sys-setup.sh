@@ -49,7 +49,7 @@ sudo apt-get install -y git vim-gnome ctags curl xclip tmux emacs24 emacs24-el\
 
 # ext
 # sudo apt-get install -y incron ssh privoxy python-pip
-# sudo apt-get install -y nginx php4-cli php5-fpm php5-mysql php5-curl mysql-server mysql-client python-mysql.connector
+# sudo apt-get install -y nginx php5-cli php5-fpm php5-mysql php5-curl mysql-server mysql-client python-mysql.connector
 # sudo apt-get install -y gimp gimp-help-en gpick gwenview
 
 # google-chrome
