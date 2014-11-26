@@ -77,10 +77,11 @@ git archive --format=tar [--prefix=folder/] HEAD | gzip > package.tar.gz
 git grep -w -e ${word}
 
 # create & apply patch http://ariejan.net/2009/10/26/how-to-create-and-apply-a-patch-with-git/
-git format-patch HEAD^..HEAD --stdout > test.patch
-git apply --stat  test.patch
-git apply --check test.patch
-git am --signoff < test.patch
+git format-patch HEAD^..HEAD --stdout > some.patch
+git am --signoff < some.patch
+git diff [--cached] > diff.patch
+git apply --stat  diff.patch
+git apply --check diff.patch
 
 git log --follow <path/to/renamed/file>
 git log --name-only
