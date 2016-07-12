@@ -5,6 +5,9 @@ git add | branch | checkout | clone | commit | diff | fetch | grep | init
     | ls-files | filter-branch | cherry-pick | rev-parse | ls-tree | format-patch
 # More: http://searchco.de/lists/list-of-git-commands
 
+#
+git config --list --show-origin
+
 # reset commits
 git reset --hard HEAD~3
 # HEAD, HEAD^, and HEAD~2
@@ -126,6 +129,7 @@ fi
 # GIT_AUTHOR_EMAIL
 # GIT_COMMITTER_NAME
 # GIT_COMMITTER_EMAIL
+git ci --amend --reset-author
 
 # remote
 git remote add | rename | rm | set-url
