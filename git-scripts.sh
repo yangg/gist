@@ -79,6 +79,9 @@ git archive --format=tar [--prefix=folder/] HEAD | gzip > package.tar.gz
 # Print lines matching a pattern
 git grep -w -e ${word}
 
+# Stage line by line
+git add -p
+
 # create & apply patch http://ariejan.net/2009/10/26/how-to-create-and-apply-a-patch-with-git/
 git format-patch HEAD^..HEAD --stdout > some.patch
 git am --signoff < some.patch
