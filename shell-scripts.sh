@@ -192,3 +192,6 @@ open .
 
 # Flush Directory Service cache
 dscacheutil -flushcache
+
+# curl unzip on the fly
+curl -L http://.../xx.zip | bsdtar -xf-
