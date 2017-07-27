@@ -137,6 +137,8 @@ git ci --amend --reset-author
 # remote
 git remote add | rename | rm | set-url
 
+git fsck --lost-found
+
 # Github Secrets https://github.com/blog/967-github-secrets
 # whitespace ?w=1
 # cross-repository issue references user/repository#issuenumber
